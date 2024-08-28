@@ -8,7 +8,6 @@ phases:
   build:
     commands:
       - echo Build started on `date`
-      - npm start # or your build command if any
   post_build:
     commands:
       - echo Build completed on `date`
