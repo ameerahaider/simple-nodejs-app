@@ -10,8 +10,8 @@ phases:
       - echo Build completed on `date`
       - echo Packaging application for Elastic Beanstalk...
       - zip -r application.zip . # Package the entire directory into application.zip
-      #- echo "Uploading the build output to S3"
-      #- aws s3 cp application.zip s3://$S3_BUCKET_NAME/application.zip
+      - echo "Uploading the build output to S3"
+      - aws s3 cp application.zip s3://$S3_BUCKET_NAME/application.zip
 
 artifacts:
   files:
