@@ -1,0 +1,21 @@
+version: 0.2
+
+phases:
+  install:
+    commands:
+      - echo Installing dependencies...
+      - npm install
+  build:
+    commands:
+      - echo Build started on `date`
+      - npm start # or your build command if any
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Packaging application for Elastic Beanstalk...
+      - zip -r ../application.zip * # Zip the contents for Elastic Beanstalk
+
+artifacts:
+  files:
+    - ../application.zip
+  discard-paths: yes
