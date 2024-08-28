@@ -12,9 +12,8 @@ phases:
     commands:
       - echo Build completed on `date`
       - echo Packaging application for Elastic Beanstalk...
-      - zip -r ../application.zip * # Zip the contents for Elastic Beanstalk
+      - zip -r application.zip . # Package the entire directory into application.zip
 
 artifacts:
   files:
-    - ../application.zip
-  discard-paths: yes
+    - application.zip
