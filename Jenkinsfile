@@ -2,7 +2,7 @@ node {
     // Define environment variables
     def GIT_REPO_URL = 'https://github.com/ameerahaider/simple-nodejs-app.git'
     def EC2_SSH_CREDENTIALS_ID = 'ssh-key'
-    def EC2_INSTANCE_IP = '52.23.237.13'
+    def EC2_INSTANCE_IP = '52.90.212.38'
     def APP_PATH = '/home/ubuntu'
 
     // Stage: Clone Repository
@@ -39,9 +39,6 @@ node {
         withCredentials([sshUserPrivateKey(credentialsId: EC2_SSH_CREDENTIALS_ID, keyFileVariable: 'SSH_KEY')]) {
             sh """
                 echo "Copying files to EC2 instance..."
-                echo "Files in workspace:"
-                ls -l
-
                 scp -o StrictHostKeyChecking=no -i $SSH_KEY -r * ubuntu@${EC2_INSTANCE_IP}:${APP_PATH}
             """
         }
@@ -62,7 +59,7 @@ node {
     }
 
     // Post actions for success and failure
-    if (currentBuild.result == 'SUCCESS') {
+    if (currentBuild.currentResult == 'SUCCESS') {
         echo 'Pipeline completed successfully!'
     } else {
         echo 'Pipeline failed!'
