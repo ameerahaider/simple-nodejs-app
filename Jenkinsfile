@@ -58,13 +58,6 @@ node {
         }
     }
 
-    // Post actions for success and failure
-    if (currentBuild.currentResult == 'SUCCESS') {
-        echo 'Pipeline completed successfully!'
-    } else {
-        echo 'Pipeline failed!'
-    }
-
     // Always clean workspace
     cleanWs()
 }
